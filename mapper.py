@@ -6,18 +6,22 @@ import sys
 # input comes from STDIN (standard input)
 for line in sys.stdin:
     # remove leading and trailing whitespace and converting all into uppercase letters
-    line = line.strip().upper()   
+    line = line.strip().upper()
     # split the line into columns
     columns = line.split(',')
     # consider only last five columns of data
-    vehicletypecodes = columns[-5:]
+    vehicletypecodes = columns[24:]
+    if len(vehicletypecodes) != 5:
+        # skip this row
+        continue
     # increase counters
     for vehicletypevalue in vehicletypecodes:
+    # for vehicletypevalue in columns[-5:]:
         # skip first row - header
         if('VEHICLE TYPE CODE' in vehicletypevalue) :
             continue
         if (vehicletypevalue != '') :
-            # ('VEHICLE TYPE CODE' not in vehicletypevalue) 
+            # ('VEHICLE TYPE CODE' not in vehicletypevalue)
             # if vehicletypevalue is not null, write the results to STDOUT; what we output here will be the input for reducer.py
             print '%s\t%s' % (vehicletypevalue, 1)
             # tab-delimited;
