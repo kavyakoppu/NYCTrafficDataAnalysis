@@ -36,7 +36,7 @@ Analyze the NYC traffic data using mapper and reducer scripts and yield summary 
 koppuka@hadoop-gate-0:~/NYCTrafficDataAnalysis4$ `hadoop fs -cat <inputDataPath> | python mapper.py | sort | python reducer.py`  
 * To run in hadoop cluster using Hadoop Streaming jar :  
 koppuka@hadoop-gate-0:~/NYCTrafficDataAnalysis4$ `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -file mapper.py -mapper mapper.py -file reducer.py -reducer reducer.py -input /user/tatavag/nyc.data -output hadoopstreamingoutput`  
-* or you can use different Hadoop streaming jar based on version :
+or you can use different Hadoop streaming jar based on version :  
 koppuka@hadoop-gate-0:~/NYCTrafficDataAnalysis4$ `hadoop jar /usr/hdp/3.1.0.0-78/hadoop-mapreduce/hadoop-streaming-3.1.1.3.1.0.0-78.jar -file mapper.py -mapper 'python mapper.py' -file reducer.py -reducer 'python reducer.py' -input /user/tatavag/nyc.data -output hadoopstreamingoutput`  
 * To view results in output file :  
 `hadoop fs -cat hadoopstreamingoutput/*`  
